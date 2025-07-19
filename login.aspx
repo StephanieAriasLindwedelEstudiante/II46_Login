@@ -2,22 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <div class="d-flex align-items-center py-4 bg-body-tertiary">
         <main class="form-signin w-100 m-auto">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <h1 class="h3 mb-3 fw-normal">Iniciar sesion</h1>
 
             <div class="form-floating">
                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="SingleLine" placeholder="Email"></asp:TextBox>
-                <label for="MainContent_txtEmail">Email address</label>
+                <label for="MainContent_txtEmail">Correo</label>
             </div>
 
             <div class="form-floating">
                 <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
-                <label for="MainContent_txtPass">Password</label>
+                <label for="MainContent_txtPass">Clave</label>
             </div>
 
             <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Remember me
+                    Recordarme
                 </label>
             </div>
             <asp:Button CssClass="btn btn-primary w-100 py-2" ID="btnLogin" runat="server" Text="Acceder" OnClick="btnLogin_Click" />
