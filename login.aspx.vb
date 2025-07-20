@@ -6,18 +6,17 @@ Public Class login
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
-    Protected Function verificarUsuario(email As String, password As String) As Boolean
+    Protected Function verificarUsuario(usuario As Usuario) As Boolean
         Try
 
             Dim helper As New DatabaseHelper()
             Dim parametros As New List(Of SqlParameter) From {
-                New SqlParameter("@Email", email),
-                New SqlParameter("@Password", password)
+                New SqlParameter("@Email", usuario.Email),
+                New SqlParameter("@Password", usuario.Password)
             }
 
-            Dim query As String = "SELECT * FROM Usuarios WHERE EMAIL = @Email AND CONTRASENIA = @Password"
+            Dim query As String = "SELECT * FROM Usuarios WHERE EMAIL = @Email AND CONTRASENIA = @Password;"
             Dim dataTable As DataTable = helper.ExecuteQuery(query, parametros)
-            Dim usuario As New Usurario()
             If dataTable.Rows.Count > 0 Then
                 usuario = usuario.dtToUsurario(dataTable)
                 ' Usuario encontrado, puedes redirigir o realizar otra acción
@@ -38,25 +37,13 @@ Public Class login
 
         Dim email As String = txtEmail.Text
         Dim password As String = txtPass.Text
-        Dim usuario As New Usurario() With {
-            .Email = email,
-            .Password = password
+        Dim usuario As New Usuario() With {
+            .Email = txtEmail.Text,
+            .Password = txtPass.Text
         }
-        Dim helper As New DatabaseHelper()
         ' Validar el usuario
-        Dim parametros As New List(Of SqlParameter) From {
-            New SqlParameter("@Email", email),
-            New SqlParameter("@Password", password)
-        }
-        ' Ejecutar la consulta para verificar el usuario
-        Dim dataTable As DataTable = helper.ExecuteQuery("SELECT * FROM Usuarios WHERE EMAIL = @Email AND CONTRASENIA = @Password", parametros)
-        If usuario.Validar() Then
-            If email = "test@example.com" And password = "password" Then
-                Response.Redirect("Default.aspx")
-            Else
-                lblError.Text = "Usuario o contraseña incorrectos."
-                lblError.Visible = True
-            End If
+        If verificarUsuario(usuario) Then
+            Response.Redirect("Default.aspx")
         Else
 
             lblError.Text = "Usuario o contraseña incorrectos."

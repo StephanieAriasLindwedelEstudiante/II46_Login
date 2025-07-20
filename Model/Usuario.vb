@@ -1,4 +1,4 @@
-﻿Public Class Usurario
+﻿Public Class Usuario
 
     Public Property Id As Integer
     Public Property Nombre As String
@@ -13,16 +13,16 @@
     Public Function Validar() As Boolean
         Return Not String.IsNullOrEmpty(Email) AndAlso Not String.IsNullOrEmpty(Password)
     End Function
-    Public Function dtToUsurario(dataTable As DataTable) As Usurario
+    Public Function dtToUsurario(dataTable As DataTable) As Usuario
         If dataTable Is Nothing OrElse dataTable.Rows.Count = 0 Then
             Return Nothing
         End If
 
         Dim row As DataRow = dataTable.Rows(0)
-        Dim usuario As New Usurario With {
+        Dim usuario As New Usuario With {
             .Id = Convert.ToInt32(row("ID")),
             .Nombre = Convert.ToString(row("NOMBRE")),
-            .Apellido = Convert.ToString(row("APELLIDO")),
+            .Apellido = Convert.ToString(row("APELLIDOS")),
             .Email = Convert.ToString(row("EMAIL")),
             .Password = Convert.ToString(row("CONTRASENIA"))
         }
