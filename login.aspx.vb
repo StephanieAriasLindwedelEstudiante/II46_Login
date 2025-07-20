@@ -15,14 +15,16 @@ Public Class login
                 New SqlParameter("@Password", password)
             }
 
-            Dim dataTable As DataTable = helper.ExecuteQuery("SELECT * FROM Usuarios WHERE EMAIL = @Email AND CONTRASENIA = @Password", parametros)
-            Return dataTable.Rows.Count > 0
+            Dim query As String = "SELECT * FROM Usuarios WHERE EMAIL = @Email AND CONTRASENIA = @Password"
+            Dim dataTable As DataTable = helper.ExecuteQuery(query, parametros)
+            Dim usuario As New Usurario()
             If dataTable.Rows.Count > 0 Then
+                usuario = usuario.dtToUsurario(dataTable)
                 ' Usuario encontrado, puedes redirigir o realizar otra acción
-                Session.Add("UsuarioId", dataTable.Rows(0)("Id").ToString())
-                Session.Add("UsuarioNombre", dataTable.Rows(0)("Nombre").ToString())
-                Session.Add("UsuarioApellido", dataTable.Rows(0)("Apellido").ToString())
-                Session.Add("UsuarioEmail", dataTable.Rows(0)("Email").ToString())
+                Session.Add("UsuarioId", usuario.Id.ToString())
+                Session.Add("UsuarioNombre", usuario.Nombre.ToString())
+                Session.Add("UsuarioApellido", usuario.Apellido.ToString())
+                Session.Add("UsuarioEmail", usuario.Email.ToString())
                 Return True
             Else
                 ' Usuario no encontrado, manejar el error
