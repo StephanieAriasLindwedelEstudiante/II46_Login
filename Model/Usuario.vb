@@ -13,7 +13,7 @@
     Public Function Validar() As Boolean
         Return Not String.IsNullOrEmpty(Email) AndAlso Not String.IsNullOrEmpty(Password)
     End Function
-    Public Function dtToUsurario(dataTable As DataTable) As Usuario
+    Public Function dtToUsuario(dataTable As DataTable) As Usuario
         If dataTable Is Nothing OrElse dataTable.Rows.Count = 0 Then
             Return Nothing
         End If

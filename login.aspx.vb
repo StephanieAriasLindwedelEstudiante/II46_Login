@@ -18,7 +18,7 @@ Public Class login
             Dim query As String = "SELECT * FROM Usuarios WHERE EMAIL = @Email AND CONTRASENIA = @Password;"
             Dim dataTable As DataTable = helper.ExecuteQuery(query, parametros)
             If dataTable.Rows.Count > 0 Then
-                usuario = usuario.dtToUsurario(dataTable)
+                usuario = usuario.dtToUsuario(dataTable)
                 ' Usuario encontrado, puedes redirigir o realizar otra acción
                 Session.Add("UsuarioId", usuario.Id.ToString())
                 Session.Add("UsuarioNombre", usuario.Nombre.ToString())
@@ -34,9 +34,6 @@ Public Class login
         End Try
     End Function
     Protected Sub btnLogin_Click(sender As Object, e As EventArgs)
-
-        Dim email As String = txtEmail.Text
-        Dim password As String = txtPass.Text
         Dim usuario As New Usuario() With {
             .Email = txtEmail.Text,
             .Password = txtPass.Text
