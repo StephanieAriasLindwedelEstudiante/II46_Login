@@ -68,6 +68,15 @@ Partial Public Class Registro
     Protected WithEvents btnRegistrar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control lblDebug.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblDebug As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control lblError.
     '''</summary>
     '''<remarks>

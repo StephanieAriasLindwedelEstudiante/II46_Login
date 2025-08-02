@@ -29,6 +29,7 @@
             </div>
 
             <asp:Button CssClass="btn btn-primary w-100 py-2" ID="btnRegistrar" runat="server" Text="Registrarse" OnClick="btnRegistrar_Click" />
+            <asp:Label ID="lblDebug" runat="server" ForeColor="Blue" Visible="false" />
         </div>
 
         <a href="Login.aspx">¿Ya estas registrado?</a>

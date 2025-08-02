@@ -17,8 +17,8 @@ Public Class Registro
                 New SqlParameter("@Apellido", usuario.Apellido)
             }
 
-            Dim rowsAffected As Integer = helper.ExecuteNonQuery(query, parametros)
-            Return rowsAffected > 0
+            Dim resultado As Boolean = helper.ExecuteNonQuery(query, parametros)
+            Return resultado
         Catch ex As Exception
             ' Manejar la excepción según sea necesario
             Return False
@@ -31,12 +31,20 @@ Public Class Registro
             .Nombre = txtNombre.Text,
             .Apellido = txtApellido.Text
         }
+
         If RegistrarUsuario(usuario) Then
-            ' Redirigir al login o a la página de inicio
             Response.Redirect("Login.aspx")
+            ScriptManager.RegisterStartupScript(
+                Me, Me.GetType(),
+                "ServerControlScript",
+                "Swal.fire('Usuario Registrado');",
+                True)
         Else
-            lblError.Text = "Error al registrar el usuario. Inténtalo de nuevo."
-            lblError.Visible = True
+            ScriptManager.RegisterStartupScript(
+                Me, Me.GetType(),
+                "ServerControlScript",
+                "Swal.fire('Error al registrar el usuario. Inténtalo de nuevo.');",
+                True)
         End If
     End Sub
 End Class
