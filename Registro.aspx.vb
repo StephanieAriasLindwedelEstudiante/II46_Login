@@ -33,18 +33,26 @@ Public Class Registro
         }
 
         If RegistrarUsuario(usuario) Then
-            Response.Redirect("Login.aspx")
+            ' Redirigir al login o a la página de inicio
+
             ScriptManager.RegisterStartupScript(
                 Me, Me.GetType(),
-                "ServerControlScript",
-                "Swal.fire('Usuario Registrado');",
+                "RegistrarUsuarioOk",
+                "Swal.fire('Usuario Registrado').then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'Login.aspx';
+                    }
+                });",
                 True)
+
         Else
             ScriptManager.RegisterStartupScript(
                 Me, Me.GetType(),
-                "ServerControlScript",
+                "RegistrarUsuarioError",
                 "Swal.fire('Error al registrar el usuario. Inténtalo de nuevo.');",
                 True)
+            lblError.Text = "Error al registrar el usuario. Inténtalo de nuevo."
+            lblError.Visible = True
         End If
     End Sub
 End Class
