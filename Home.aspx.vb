@@ -7,8 +7,8 @@
             Response.Redirect("Login.aspx")
         Else
             ' Usuario está autenticado, puedes mostrar información del usuario
+            lblNombre.Text = Session("UsuarioNombre").ToString() + " " + Session("UsuarioApellido").ToString() + " "
             lblEmail.Text = Session("UsuarioEmail").ToString()
-            lblNombre.Text = Session("UsuarioNombre").ToString() + " " + Session("UsuarioApellido").ToString()
         End If
     End Sub
 

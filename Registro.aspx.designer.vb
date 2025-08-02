@@ -50,15 +50,6 @@ Partial Public Class Registro
     Protected WithEvents txtPass As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control RequiredFieldValidatorPass.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents RequiredFieldValidatorPass As Global.System.Web.UI.WebControls.RequiredFieldValidator
-
-    '''<summary>
     '''Control btnRegistrar.
     '''</summary>
     '''<remarks>
@@ -68,15 +59,6 @@ Partial Public Class Registro
     Protected WithEvents btnRegistrar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control lblDebug.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblDebug As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''Control lblError.
     '''</summary>
     '''<remarks>
@@ -84,4 +66,13 @@ Partial Public Class Registro
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents lblError As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control lblDebug.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblDebug As Global.System.Web.UI.WebControls.Label
 End Class
